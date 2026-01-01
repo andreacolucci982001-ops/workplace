@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspace di Cinese - Impara Divertendoti</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #d32f2f;
+            --primary-light: #ff6659;
+            --primary-dark: #9a0007;
+            --secondary: #ffcc00;
+            --secondary-light: #ffff5a;
+            --secondary-dark: #c79c00;
+            --dark: #263238;
+            --light: #f5f5f5;
+            --gray: #757575;
+            --success: #4caf50;
+            --info: #2196f3;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 25px 20px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            text-align: center;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
+        
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            font-size: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--secondary-dark);
+        }
+        
+        .btn-info {
+            background: var(--info);
+        }
+        
+        .btn-info:hover {
+            background: #0b7dda;
+        }
+        
+        .word-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+            border-left: 6px solid var(--primary);
+            transition: transform 0.3s;
+        }
+        
+        .word-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .word-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .word-header h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .pinyin {
+            color: var(--gray);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .translation {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #fff9e6;
+            border-radius: 8px;
+        }
+        
+        .section-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin: 15px 0 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 8px;
+        }
+        
+        .associations, .example-sentence {
+            background-color: #f9f9f9;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray);
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+        }
+        
+        .word-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        .action-btn:hover {
+            color: var(--primary);
+            background-color: #f5f5f5;
+        }
+        
+        .action-btn i {
+            margin-right: 5px;
+        }
+        
+        .search-box {
+            margin-bottom: 25px;
+        }
+        
+        .search-box input {
+            padding: 15px;
+            font-size: 1rem;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 15px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .word-count {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .character-display {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .tips {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 25px;
+            border-left: 5px solid var(--success);
+        }
+        
+        .tips h3 {
+            color: var(--success);
+            margin-bottom: 10px;
+        }
+        
+        /* Stili per la pagina audio */
+        .audio-player {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .audio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .audio-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+        
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .play-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .play-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        
+        .progress-container {
+            flex-grow: 1;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+            width: 0%;
+        }
+        
+        .time-display {
+            font-size: 0.9rem;
+            color: var(--gray);
+            min-width: 100px;
+            text-align: right;
+        }
+        
+        .upload-area {
+            border: 3px dashed #ccc;
+            border-radius: 15px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary);
+            background-color: #f9f9f9;
+        }
+        
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .audio-list {
+            margin-top: 30px;
+        }
+        
+        .audio-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--info);
+        }
+        
+        .audio-info {
+            flex-grow: 1;
+        }
+        
+        .audio-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .audio-meta {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .audio-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .audio-upload-form {
+            display: none;
+        }
+        
+        #audio-file {
+            display: none;
+        }
+        
+        .file-info {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .status-message {
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+        }
+        
+        .status-success {
+            background-color: #e8f5e9;
+            color: var(--success);
+            display: block;
+        }
+        
+        .status-error {
+            background-color: #ffebee;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .page-container {
+            display: none;
+        }
+        
+        .page-container.active {
+            display: block;
+        }
+        
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ccc;
+        }
+        
+        .status-dot.connected {
+            background-color: var(--success);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-dragon"></i>
+                <span>Workspace di Cinese</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#" class="nav-link active" data-page="home">
+                    <i class="fas fa-book"></i> Parole
+                </a>
+                <a href="#" class="nav-link" data-page="audio">
+                    <i class="fas fa-music"></i> Audio
+                </a>
+            </div>
+        </div>
+        
+        <h1>Impara il Cinese in Modo Divertente</h1>
+        <p class="subtitle">Aggiungi nuove parole, carica audio e memorizza il cinese con esempi pratici. Tutto in un unico posto!</p>
+        
+        <div class="connection-status">
+            <div class="status-dot" id="status-dot"></div>
+            <span id="status-text">Connessione a Supabase...</span>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Pagina Home (Parole) -->
+        <div id="home-page" class="page-container active">
+            <div class="main-content">
+                <!-- Form per aggiungere nuove parole -->
+                <div class="left-column">
+                    <div class="card">
+                        <h2><i class="fas fa-plus-circle"></i> Aggiungi Nuova Parola</h2>
+                        
+                        <div class="form-group">
+                            <label for="chinese-word">Parola Cinese (汉字)</label>
+                            <input type="text" id="chinese-word" placeholder="Es: 你好" maxlength="10">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pinyin">Pinyin</label>
+                            <input type="text" id="pinyin" placeholder="Es: nǐ hǎo">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="translation">Traduzione in Italiano</label>
+                            <input type="text" id="translation" placeholder="Es: Ciao">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="associations">Associazioni / Mnemotecnica</label>
+                            <textarea id="associations" placeholder="Es: 你 (nǐ) sembra un albero che saluta, 好 (hǎo) è una donna con un bambino = bene"></textarea>
+                            <small>Scrivi associazioni creative per ricordare la parola</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="example">Frase d'Esempio</label>
+                            <textarea id="example" placeholder="Es: 你好吗？ (nǐ hǎo ma?) - Come stai?"></textarea>
+                        </div>
+                        
+                        <button class="btn" id="add-word-btn">
+                            <i class="fas fa-save"></i> Salva Parola
+                        </button>
+                        
+                        <div class="tips">
+                            <h3><i class="fas fa-lightbulb"></i> Suggerimento</h3>
+                            <p>Crea associazioni visive o sonore con parole italiane per ricordare meglio i caratteri cinesi. Es: 马 (mǎ - cavallo) assomiglia a un cavallo visto di lato.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="stats">
+                            <div class="stat-item">
+                                <div class="stat-number" id="total-words">0</div>
+                                <div class="stat-label">Parole Totali</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="today-words">0</div>
+                                <div class="stat-label">Oggi</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="review-count">0</div>
+                                <div class="stat-label">Da Ripassare</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Visualizzazione parole esistenti -->
+                <div class="right-column">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Cerca parole, traduzioni o pinyin...">
+                    </div>
+                    
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">Tutte</button>
+                        <button class="filter-btn" data-filter="recent">Recenti</button>
+                        <button class="filter-btn" data-filter="review">Da Ripassare</button>
+                        <button class="filter-btn" data-filter="favorite">Preferite</button>
+                    </div>
+                    
+                    <div id="words-container">
+                        <!-- Le parole verranno caricate qui dinamicamente -->
+                        <div class="empty-state" id="empty-state">
+                            <i class="far fa-file-alt"></i>
+                            <h3>Nessuna parola ancora</h3>
+                            <p>Aggiungi la tua prima parola cinese usando il modulo a sinistra!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="word-count">
+                        Mostrando <span id="display-count">0</span> parole su <span id="total-count">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pagina Audio -->
+        <div id="audio-page" class="page-container">
+            <div class="main-content">
+                <div class="left-column">
+                    <div class="card">
+                        <h2><i class="fas fa-upload"></i> Carica Audio</h2>
+                        
+                        <div class="upload-area" id="upload-area">
+                            <i class="fas fa-file-audio"></i>
+                            <h3>Trascina qui i tuoi file audio</h3>
+                            <p>oppure clicca per selezionare</p>
+                            <p class="file-info" id="file-info">Nessun file selezionato</p>
+                        </div>
+                        
+                        <div class="audio-upload-form">
+                            <div class="form-group">
+                                <label for="audio-title">Titolo Audio</label>
+                                <input type="text" id="audio-title" placeholder="Es: Pronuncia di 你好">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="audio-description">Descrizione</label>
+                                <textarea id="audio-description" placeholder="Es: Pronuncia corretta di 'ciao' in cinese"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="audio-category">Categoria</label>
+                                <select id="audio-category">
+                                    <option value="pronuncia">Pronuncia</option>
+                                    <option value="dialoghi">Dialoghi</option>
+                                    <option value="canzoni">Canzoni</option>
+                                    <option value="lezioni">Lezioni</option>
+                                    <option value="altro">Altro</option>
+                                </select>
+                            </div>
+                            
+                            <button class="btn btn-info" id="upload-audio-btn">
+                                <i class="fas fa-cloud-upload-alt"></i> Carica Audio
+                            </button>
+                        </div>
+                        
+                        <div class="status-message" id="upload-status"></div>
+                    </div>
+                    
+                    <div class="card">
+                        <h2><i class="fas fa-headphones"></i> Player Audio</h2>
+                        <div class="audio-player">
+                            <div class="audio-header">
+                                <div class="audio-title" id="current-audio-title">Nessun audio selezionato</div>
+                            </div>
+                            
+                            <div class="audio-controls">
+                                <button class="play-btn" id="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                
+                                <div class="progress-container" id="progress-container">
+                                    <div class="progress-bar" id="progress-bar"></div>
+                                </div>
+                                
+                                <div class="time-display">
+                                    <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+                                </div>
+                            </div>
+                            
+                            <audio id="audio-element" preload="metadata"></audio>
+                        </div>
+                        
+                        <div class="tips">
+                            <h3><i class="fas fa-info-circle"></i> Informazioni</h3>
+                            <p>Puoi caricare file audio MP3, WAV o OGG fino a 10MB. Gli audio vengono salvati su Supabase e sono accessibili da qualsiasi dispositivo.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right-column">
+                    <div class="card">
+                        <h2><i class="fas fa-list"></i> I Tuoi Audio</h2>
+                        
+                        <div class="search-box">
+                            <input type="text" id="audio-search" placeholder="Cerca audio per titolo o descrizione...">
+                        </div>
+                        
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-audio-filter="all">Tutti</button>
+                            <button class="filter-btn" data-audio-filter="pronuncia">Pronuncia</button>
+                            <button class="filter-btn" data-audio-filter="dialoghi">Dialoghi</button>
+                            <button class="filter-btn" data-audio-filter="canzoni">Canzoni</button>
+                            <button class="filter-btn" data-audio-filter="lezioni">Lezioni</button>
+                        </div>
+                        
+                        <div class="audio-list" id="audio-list">
+                            <div class="empty-state">
+                                <i class="fas fa-music"></i>
+                                <h3>Nessun audio ancora</h3>
+                                <p>Carica il tuo primo file audio usando il modulo a sinistra!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="word-count">
+                            Mostrando <span id="audio-display-count">0</span> audio su <span id="audio-total-count">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Workspace di Cinese - Un progetto per imparare il cinese in modo divertente ed efficace</p>
+            <p>Le parole vengono salvate nel tuo browser, gli audio su Supabase</p>
+        </footer>
+    </div>
+
+    <script>
+        // Configurazione Supabase
+        const SUPABASE_URL = 'https://jamlmyhqdyxlwjmaewyg.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_q_WGPgvRvhWXUFMUdCtWiw_ZkqeXMSs';
+        
+        // Inizializza Supabase
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        
+        // Riferimenti agli elementi del DOM
+        const addWordBtn = document.getElementById('add-word-btn');
+        const chineseWordInput = document.getElementById('chinese-word');
+        const pinyinInput = document.getElementById('pinyin');
+        const translationInput = document.getElementById('translation');
+        const associationsInput = document.getElementById('associations');
+        const exampleInput = document.getElementById('example');
+        const wordsContainer = document.getElementById('words-container');
+        const emptyState = document.getElementById('empty-state');
+        const searchInput = document.getElementById('search-input');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const totalWordsElement = document.getElementById('total-words');
+        const todayWordsElement = document.getElementById('today-words');
+        const reviewCountElement = document.getElementById('review-count');
+        const displayCountElement = document.getElementById('display-count');
+        const totalCountElement = document.getElementById('total-count');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageContainers = document.querySelectorAll('.page-container');
+        const statusDot = document.getElementById('status-dot');
+        const statusText = document.getElementById('status-text');
+        
+        // Elementi audio
+        const uploadArea = document.getElementById('upload-area');
+        const audioFileInput = document.getElementById('audio-file');
+        const audioTitleInput = document.getElementById('audio-title');
+        const audioDescriptionInput = document.getElementById('audio-description');
+        const audioCategoryInput = document.getElementById('audio-category');
+        const uploadAudioBtn = document.getElementById('upload-audio-btn');
+        const uploadStatus = document.getElementById('upload-status');
+        const fileInfo = document.getElementById('file-info');
+        const audioList = document.getElementById('audio-list');
+        const audioSearch = document.getElementById('audio-search');
+        const audioDisplayCount = document.getElementById('audio-display-count');
+        const audioTotalCount = document.getElementById('audio-total-count');
+        const playBtn = document.getElementById('play-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressContainer = document.getElementById('progress-container');
+        const currentTimeElement = document.getElementById('current-time');
+        const durationElement = document.getElementById('duration');
+        const audioElement = document.getElementById('audio-element');
+        const currentAudioTitle = document.getElementById('current-audio-title');
+        
+        // Stato dell'applicazione
+        let words = [];
+        let audios = [];
+        let currentFilter = 'all';
+        let currentAudioFilter = 'all';
+        let searchQuery = '';
+        let audioSearchQuery = '';
+        let selectedAudioFile = null;
+        let currentPlayingAudio = null;
+        
+        // Controlla la connessione a Supabase
+        async function checkSupabaseConnection() {
+            try {
+                const { data, error } = await supabase.from('audios').select('count').limit(1);
+                
+                if (error) {
+                    console.error('Errore connessione Supabase:', error);
+                    statusDot.classList.remove('connected');
+                    statusText.textContent = 'Errore connessione a Supabase';
+                    return false;
+                }
+                
+                statusDot.classList.add('connected');
+                statusText.textContent = 'Connesso a Supabase';
+                return true;
+            } catch (error) {
+                console.error('Errore connessione Supabase:', error);
+                statusDot.classList.remove('connected');
+                statusText.textContent = 'Errore connessione a Supabase';
+                return false;
+            }
+        }
+        
+        // Carica le parole dal localStorage all'avvio
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Controlla connessione Supabase
+            await checkSupabaseConnection();
+            
+            // Carica dati
+            loadWords();
+            updateStats();
+            renderWords();
+            loadAudios();
+            
+            // Aggiungi alcune parole di esempio se non ce ne sono
+            if (words.length === 0) {
+                addExampleWords();
+            }
+            
+            // Aggiungi un po' di interattività per la data odierna
+            const today = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.querySelector('.subtitle').innerHTML += `<br><small>Oggi è ${today.toLocaleDateString('it-IT', options)}</small>`;
+        });
+        
+        // Navigazione tra pagine
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const page = this.getAttribute('data-page');
+                
+                // Aggiorna link attivo
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Mostra la pagina corretta
+                pageContainers.forEach(container => {
+                    container.classList.remove('active');
+                });
+                
+                document.getElementById(`${page}-page`).classList.add('active');
+                
+                // Se siamo nella pagina audio, carica gli audio
+                if (page === 'audio') {
+                    loadAudios();
+                }
+            });
+        });
+        
+        // ========== FUNZIONI PER LE PAROLE ==========
+        
+        // Aggiungi parola
+        addWordBtn.addEventListener('click', function() {
+            const chineseWord = chineseWordInput.value.trim();
+            const pinyin = pinyinInput.value.trim();
+            const translation = translationInput.value.trim();
+            
+            if (!chineseWord || !pinyin || !translation) {
+                alert('Per favore, inserisci almeno la parola cinese, il pinyin e la traduzione.');
+                return;
+            }
+            
+            const newWord = {
+                id: Date.now(),
+                chinese: chineseWord,
+                pinyin: pinyin,
+                translation: translation,
+                associations: associationsInput.value.trim(),
+                example: exampleInput.value.trim(),
+                dateAdded: new Date().toISOString().split('T')[0],
+                lastReviewed: null,
+                needsReview: true,
+                favorite: false
+            };
+            
+            words.unshift(newWord); // Aggiungi all'inizio
+            saveWords();
+            renderWords();
+            updateStats();
+            clearForm();
+            
+            // Evidenzia l'animazione
+            addWordBtn.innerHTML = '<i class="fas fa-check"></i> Parola Aggiunta!';
+            addWordBtn.style.backgroundColor = 'var(--success)';
+            
+            setTimeout(() => {
+                addWordBtn.innerHTML = '<i class="fas fa-save"></i> Salva Parola';
+                addWordBtn.style.backgroundColor = '';
+            }, 1500);
+        });
+        
+        // Funzione per caricare le parole da localStorage
+        function loadWords() {
+            const savedWords = localStorage.getItem('chineseWords');
+            if (savedWords) {
+                words = JSON.parse(savedWords);
+            }
+        }
+        
+        // Funzione per salvare le parole in localStorage
+        function saveWords() {
+            localStorage.setItem('chineseWords', JSON.stringify(words));
+        }
+        
+        // Funzione per ripulire il form
+        function clearForm() {
+            chineseWordInput.value = '';
+            pinyinInput.value = '';
+            translationInput.value = '';
+            associationsInput.value = '';
+            exampleInput.value = '';
+            chineseWordInput.focus();
+        }
+        
+        // Funzione per visualizzare le parole
+        function renderWords() {
+            // Filtra le parole in base al filtro attivo e alla ricerca
+            let filteredWords = words;
+            
+            // Applica il filtro
+            if (currentFilter === 'recent') {
+                const oneWeekAgo = new Date();
+                oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+                filteredWords = filteredWords.filter(word => {
+                    const wordDate = new Date(word.dateAdded);
+                    return wordDate >= oneWeekAgo;
+                });
+            } else if (currentFilter === 'review') {
+                filteredWords = filteredWords.filter(word => word.needsReview);
+            } else if (currentFilter === 'favorite') {
+                filteredWords = filteredWords.filter(word => word.favorite);
+            }
+            
+            // Applica la ricerca
+            if (searchQuery) {
+                const query = searchQuery.toLowerCase();
+                filteredWords = filteredWords.filter(word => {
+                    return word.chinese.toLowerCase().includes(query) ||
+                           word.pinyin.toLowerCase().includes(query) ||
+                           word.translation.toLowerCase().includes(query) ||
+                           word.associations.toLowerCase().includes(query) ||
+                           word.example.toLowerCase().includes(query);
+                });
+            }
+            
+            // Aggiorna i contatori
+            displayCountElement.textContent = filteredWords.length;
+            totalCountElement.textContent = words.length;
+            
+            // Se non ci sono parole da mostrare, mostra lo stato vuoto
+            if (filteredWords.length === 0) {
+                emptyState.style.display = 'block';
+                wordsContainer.innerHTML = '';
+                wordsContainer.appendChild(emptyState);
+                return;
+            }
+            
+            // Nascondi lo stato vuoto
+            emptyState.style.display = 'none';
+            
+            // Crea gli elementi per ogni parola
+            let wordsHTML = '';
+            filteredWords.forEach(word => {
+                wordsHTML += `
+                    <div class="word-card" data-id="${word.id}">
+                        <div class="word-header">
+                            <h3 class="character-display">${word.chinese}</h3>
+                            <div>
+                                <button class="action-btn ${word.favorite ? 'favorite' : ''}" onclick="toggleFavorite(${word.id})">
+                                    <i class="${word.favorite ? 'fas' : 'far'} fa-star"></i> ${word.favorite ? 'Preferita' : 'Aggiungi ai preferiti'}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="pinyin">${word.pinyin}</div>
+                        <div class="translation">${word.translation}</div>
+                        
+                        ${word.associations ? `
+                            <div class="section-title"><i class="fas fa-brain"></i> Associazioni</div>
+                            <div class="associations">${word.associations}</div>
+                        ` : ''}
+                        
+                        ${word.example ? `
+                            <div class="section-title"><i class="fas fa-comment"></i> Frase d'Esempio</div>
+                            <div class="example-sentence">${word.example}</div>
+                        ` : ''}
+                        
+                        <div class="word-actions">
+                            <button class="action-btn" onclick="markAsReviewed(${word.id})">
+                                <i class="fas fa-check-circle"></i> Segna come ripassata
+                            </button>
+                            <button class="action-btn" onclick="deleteWord(${word.id})">
+                                <i class="fas fa-trash-alt"></i> Elimina
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            wordsContainer.innerHTML = wordsHTML;
+        }
+        
+        // Funzione per aggiungere parole di esempio
+        function addExampleWords() {
+            const exampleWords = [
+                {
+                    id: 1,
+                    chinese: '你好',
+                    pinyin: 'nǐ hǎo',
+                    translation: 'Ciao',
+                    associations: '你 (nǐ) sembra una persona che si inchina, 好 (hǎo) è una donna con un bambino = bene',
+                    example: '你好，我叫玛丽。 (nǐ hǎo, wǒ jiào mǎlì) - Ciao, mi chiamo Maria.',
+                    dateAdded: '2023-10-01',
+                    lastReviewed: '2023-10-05',
+                    needsReview: false,
+                    favorite: true
+                },
+                {
+                    id: 2,
+                    chinese: '谢谢',
+                    pinyin: 'xiè xie',
+                    translation: 'Grazie',
+                    associations: '谢 (xiè) sembra una persona che si inchina per ringraziare',
+                    example: '谢谢你的帮助。 (xièxie nǐ de bāngzhù) - Grazie per il tuo aiuto.',
+                    dateAdded: '2023-10-02',
+                    lastReviewed: null,
+                    needsReview: true,
+                    favorite: true
+                },
+                {
+                    id: 3,
+                    chinese: '爱',
+                    pinyin: 'ài',
+                    translation: 'Amore',
+                    associations: 'Sembra una persona che abbraccia un cuore',
+                    example: '我爱你。 (wǒ ài nǐ) - Ti amo.',
+                    dateAdded: '2023-10-03',
+                    lastReviewed: '2023-10-10',
+                    needsReview: false,
+                    favorite: false
+                },
+                {
+                    id: 4,
+                    chinese: '水',
+                    pinyin: 'shuǐ',
+                    translation: 'Acqua',
+                    associations: 'Sembra le onde dell\'acqua che scorrono',
+                    example: '我想要一杯水。 (wǒ xiǎng yào yī bēi shuǐ) - Vorrei un bicchiere d\'acqua.',
+                    dateAdded: '2023-10-04',
+                    lastReviewed: null,
+                    needsReview: true,
+                    favorite: false
+                }
+            ];
+            
+            words = exampleWords;
+            saveWords();
+            updateStats();
+        }
+        
+        // Funzione per aggiornare le statistiche
+        function updateStats() {
+            totalWordsElement.textContent = words.length;
+            
+            // Conta le parole aggiunte oggi
+            const today = new Date().toISOString().split('T')[0];
+            const todayWords = words.filter(word => word.dateAdded === today).length;
+            todayWordsElement.textContent = todayWords;
+            
+            // Conta le parole da ripassare
+            const reviewWords = words.filter(word => word.needsReview).length;
+            reviewCountElement.textContent = reviewWords;
+        }
+        
+        // Funzione per segnare una parola come ripassata
+        function markAsReviewed(id) {
+            const wordIndex = words.findIndex(word => word.id === id);
+            if (wordIndex !== -1) {
+                words[wordIndex].needsReview = false;
+                words[wordIndex].lastReviewed = new Date().toISOString().split('T')[0];
+                saveWords();
+                renderWords();
+                updateStats();
+                
+                // Feedback visivo
+                const wordCard = document.querySelector(`.word-card[data-id="${id}"]`);
+                wordCard.style.borderLeftColor = 'var(--success)';
+                
+                setTimeout(() => {
+                    if (wordCard) {
+                        wordCard.style.borderLeftColor = '';
+                    }
+                }, 1000);
+            }
+        }
+        
+        // Funzione per eliminare una parola
+        function deleteWord(id) {
+            if (confirm('Sei sicuro di voler eliminare questa parola?')) {
+                words = words.filter(word => word.id !== id);
+                saveWords();
+                renderWords();
+                updateStats();
+            }
+        }
+        
+        // Funzione per aggiungere/rimuovere dai preferiti
+        function toggleFavorite(id) {
+            const wordIndex = words.findIndex(word => word.id === id);
+            if (wordIndex !== -1) {
+                words[wordIndex].favorite = !words[wordIndex].favorite;
+                saveWords();
+                renderWords();
+            }
+        }
+        
+        // Gestione della ricerca
+        searchInput.addEventListener('input', function() {
+            searchQuery = this.value;
+            renderWords();
+        });
+        
+        // Gestione dei filtri
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Controlla se è un filtro per parole o audio
+                if (this.hasAttribute('data-audio-filter')) {
+                    // Filtro audio
+                    currentAudioFilter = this.getAttribute('data-audio-filter');
+                    
+                    // Aggiorna stato attivo
+                    document.querySelectorAll('[data-audio-filter]').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    renderAudios();
+                } else {
+                    // Filtro parole
+                    currentFilter = this.getAttribute('data-filter');
+                    
+                    // Aggiorna stato attivo
+                    document.querySelectorAll('[data-filter]').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    renderWords();
+                }
+            });
+        });
+        
+        // Permetti l'invio del form con il tasto Invio
+        chineseWordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addWordBtn.click();
+            }
+        });
+        
+        // ========== FUNZIONI PER GLI AUDIO ==========
+        
+        // Gestione upload area
+        uploadArea.addEventListener('click', function() {
+            // Crea un input file temporaneo
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'audio/*';
+            fileInput.multiple = false;
+            
+            fileInput.addEventListener('change', function(e) {
+                if (this.files.length > 0) {
+                    selectedAudioFile = this.files[0];
+                    
+                    // Mostra informazioni sul file
+                    fileInfo.textContent = `${selectedAudioFile.name} (${(selectedAudioFile.size / 1024 / 1024).toFixed(2)} MB)`;
+                    
+                    // Imposta titolo predefinito
+                    audioTitleInput.value = selectedAudioFile.name.replace(/\.[^/.]+$/, "");
+                    
+                    // Mostra il form di upload
+                    document.querySelector('.audio-upload-form').style.display = 'block';
+                }
+            });
+            
+            fileInput.click();
+        });
+        
+        // Upload audio a Supabase
+        uploadAudioBtn.addEventListener('click', async function() {
+            if (!selectedAudioFile) {
+                showUploadStatus('Per favore, seleziona un file audio prima di caricare.', 'error');
+                return;
+            }
+            
+            const title = audioTitleInput.value.trim();
+            if (!title) {
+                showUploadStatus('Per favore, inserisci un titolo per l\'audio.', 'error');
+                return;
+            }
+            
+            // Controlla la dimensione del file (max 10MB)
+            if (selectedAudioFile.size > 10 * 1024 * 1024) {
+                showUploadStatus('Il file è troppo grande. Dimensione massima: 10MB.', 'error');
+                return;
+            }
+            
+            try {
+                // Disabilita il pulsante durante l'upload
+                uploadAudioBtn.disabled = true;
+                uploadAudioBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Caricamento...';
+                
+                // Crea un nome file unico
+                const fileExt = selectedAudioFile.name.split('.').pop();
+                const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+                
+                // Upload del file a Supabase Storage
+                const { data: uploadData, error: uploadError } = await supabase.storage
+                    .from('chinese-audios')
+                    .upload(fileName, selectedAudioFile);
+                
+                if (uploadError) {
+                    throw uploadError;
+                }
+                
+                // Ottieni l'URL pubblico del file
+                const { data: urlData } = supabase.storage
+                    .from('chinese-audios')
+                    .getPublicUrl(fileName);
+                
+                // Salva i metadati nel database
+                const { data: insertData, error: insertError } = await supabase
+                    .from('audios')
+                    .insert([
+                        {
+                            title: title,
+                            description: audioDescriptionInput.value.trim(),
+                            category: audioCategoryInput.value,
+                            file_name: fileName,
+                            file_url: urlData.publicUrl,
+                            file_size: selectedAudioFile.size,
+                            file_type: selectedAudioFile.type,
+                            uploaded_at: new Date().toISOString()
+                        }
+                    ]);
+                
+                if (insertError) {
+                    throw insertError;
+                }
+                
+                showUploadStatus('Audio caricato con successo!', 'success');
+                
+                // Resetta il form
+                resetAudioForm();
+                
+                // Ricarica la lista audio
+                loadAudios();
+                
+            } catch (error) {
+                console.error('Errore durante l\'upload:', error);
+                showUploadStatus(`Errore durante l'upload: ${error.message}`, 'error');
+            } finally {
+                // Riabilita il pulsante
+                uploadAudioBtn.disabled = false;
+                uploadAudioBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Carica Audio';
+            }
+        });
+        
+        // Carica gli audio da Supabase
+        async function loadAudios() {
+            try {
+                const { data, error } = await supabase
+                    .from('audios')
+                    .select('*')
+                    .order('uploaded_at', { ascending: false });
+                
+                if (error) {
+                    throw error;
+                }
+                
+                audios = data || [];
+                renderAudios();
+                
+            } catch (error) {
+                console.error('Errore nel caricamento degli audio:', error);
+                audios = [];
+                renderAudios();
+            }
+        }
+        
+        // Visualizza gli audio
+        function renderAudios() {
+            let filteredAudios = audios;
+            
+            // Applica filtro categoria
+            if (currentAudioFilter !== 'all') {
+                filteredAudios = filteredAudios.filter(audio => audio.category === currentAudioFilter);
+            }
+            
+            // Applica ricerca
+            if (audioSearchQuery) {
+                const query = audioSearchQuery.toLowerCase();
+                filteredAudios = filteredAudios.filter(audio => {
+                    return audio.title.toLowerCase().includes(query) ||
+                           (audio.description && audio.description.toLowerCase().includes(query));
+                });
+            }
+            
+            // Aggiorna contatori
+            audioDisplayCount.textContent = filteredAudios.length;
+            audioTotalCount.textContent = audios.length;
+            
+            // Se non ci sono audio
+            if (filteredAudios.length === 0) {
+                audioList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-music"></i>
+                        <h3>Nessun audio trovato</h3>
+                        <p>${audios.length === 0 ? 'Carica il tuo primo file audio!' : 'Prova a cambiare filtro o ricerca'}</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Crea la lista audio
+            let audioHTML = '';
+            filteredAudios.forEach(audio => {
+                const uploadDate = new Date(audio.uploaded_at).toLocaleDateString('it-IT');
+                const fileSizeMB = (audio.file_size / 1024 / 1024).toFixed(2);
+                
+                audioHTML += `
+                    <div class="audio-item" data-id="${audio.id}">
+                        <div class="audio-info">
+                            <div class="audio-name">${audio.title}</div>
+                            <div class="audio-meta">
+                                ${audio.description ? `${audio.description} • ` : ''}
+                                ${uploadDate} • ${fileSizeMB} MB • ${audio.category}
+                            </div>
+                        </div>
+                        <div class="audio-actions">
+                            <button class="action-btn" onclick="playAudio('${audio.file_url}', '${audio.title}')">
+                                <i class="fas fa-play"></i> Ascolta
+                            </button>
+                            <button class="action-btn" onclick="deleteAudio(${audio.id})">
+                                <i class="fas fa-trash-alt"></i> Elimina
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            audioList.innerHTML = audioHTML;
+        }
+        
+        // Riproduce un audio
+        function playAudio(url, title) {
+            // Se c'è già un audio in riproduzione, fermalo
+            if (currentPlayingAudio === url && !audioElement.paused) {
+                audioElement.pause();
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                return;
+            }
+            
+            // Imposta l'audio da riprodurre
+            audioElement.src = url;
+            currentAudioTitle.textContent = title;
+            currentPlayingAudio = url;
+            
+            // Avvia la riproduzione
+            audioElement.play();
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            
+            // Aggiorna la barra di progresso
+            audioElement.addEventListener('timeupdate', updateProgress);
+            audioElement.addEventListener('loadedmetadata', function() {
+                durationElement.textContent = formatTime(audioElement.duration);
+            });
+            
+            audioElement.addEventListener('ended', function() {
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                progressBar.style.width = '0%';
+                currentTimeElement.textContent = '0:00';
+            });
+        }
+        
+        // Aggiorna la barra di progresso
+        function updateProgress() {
+            const progressPercent = (audioElement.currentTime / audioElement.duration) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+            currentTimeElement.textContent = formatTime(audioElement.currentTime);
+        }
+        
+        // Formatta il tempo in minuti:secondi
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+        
+        // Controlli del player
+        playBtn.addEventListener('click', function() {
+            if (audioElement.paused) {
+                if (!audioElement.src) {
+                    showUploadStatus('Seleziona un audio da riprodurre prima.', 'error');
+                    return;
+                }
+                audioElement.play();
+                this.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                audioElement.pause();
+                this.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        });
+        
+        // Clic sulla barra di progresso per saltare
+        progressContainer.addEventListener('click', function(e) {
+            const width = this.clientWidth;
+            const clickX = e.offsetX;
+            const duration = audioElement.duration;
+            
+            audioElement.currentTime = (clickX / width) * duration;
+        });
+        
+        // Elimina un audio
+        async function deleteAudio(id) {
+            if (!confirm('Sei sicuro di voler eliminare questo audio?')) {
+                return;
+            }
+            
+            try {
+                // Trova l'audio da eliminare
+                const audioToDelete = audios.find(audio => audio.id === id);
+                if (!audioToDelete) return;
+                
+                // Elimina il file dallo storage
+                const { error: storageError } = await supabase.storage
+                    .from('chinese-audios')
+                    .remove([audioToDelete.file_name]);
+                
+                if (storageError) {
+                    throw storageError;
+                }
+                
+                // Elimina il record dal database
+                const { error: dbError } = await supabase
+                    .from('audios')
+                    .delete()
+                    .eq('id', id);
+                
+                if (dbError) {
+                    throw dbError;
+                }
+                
+                // Ricarica gli audio
+                loadAudios();
+                
+                // Se l'audio eliminato era in riproduzione, ferma la riproduzione
+                if (currentPlayingAudio === audioToDelete.file_url) {
+                    audioElement.pause();
+                    audioElement.src = '';
+                    currentAudioTitle.textContent = 'Nessun audio selezionato';
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    progressBar.style.width = '0%';
+                    currentTimeElement.textContent = '0:00';
+                    durationElement.textContent = '0:00';
+                }
+                
+            } catch (error) {
+                console.error('Errore durante l\'eliminazione dell\'audio:', error);
+                alert('Errore durante l\'eliminazione dell\'audio. Riprova.');
+            }
+        }
+        
+        // Ricerca audio
+        audioSearch.addEventListener('input', function() {
+            audioSearchQuery = this.value;
+            renderAudios();
+        });
+        
+        // Mostra messaggio di stato per l'upload
+        function showUploadStatus(message, type) {
+            uploadStatus.textContent = message;
+            uploadStatus.className = 'status-message';
+            uploadStatus.classList.add(`status-${type}`);
+            
+            setTimeout(() => {
+                uploadStatus.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Resetta il form audio
+        function resetAudioForm() {
+            selectedAudioFile = null;
+            audioTitleInput.value = '';
+            audioDescriptionInput.value = '';
+            audioCategoryInput.value = 'pronuncia';
+            fileInfo.textContent = 'Nessun file selezionato';
+            document.querySelector('.audio-upload-form').style.display = 'none';
+        }
+        
+        // Esponi le funzioni globalmente per gli onclick
+        window.toggleFavorite = toggleFavorite;
+        window.markAsReviewed = markAsReviewed;
+        window.deleteWord = deleteWord;
+        window.playAudio = playAudio;
+        window.deleteAudio = deleteAudio;
+    </script>
+</body>
+</html>
