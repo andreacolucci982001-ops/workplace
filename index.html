@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workspace di Cinese - Impara Divertendoti</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         * {
             margin: 0;
@@ -43,7 +42,7 @@
         header {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            padding: 25px 20px;
+            padding: 20px;
             border-radius: 0 0 15px 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
@@ -69,7 +68,7 @@
         
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
         
         .nav-link {
@@ -88,24 +87,23 @@
         }
         
         h1 {
-            font-size: 2.5rem;
-            margin: 10px 0;
+            font-size: 2rem;
+            margin: 15px 0 5px;
             text-align: center;
             width: 100%;
         }
         
         .subtitle {
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto 20px;
             text-align: center;
+            margin-bottom: 10px;
         }
         
         .main-content {
             display: grid;
             grid-template-columns: 1fr 2fr;
-            gap: 30px;
+            gap: 25px;
         }
         
         @media (max-width: 900px) {
@@ -121,38 +119,38 @@
         
         .card {
             background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 25px;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
         }
         
         .card h2 {
             color: var(--primary);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
             border-bottom: 2px solid var(--secondary);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
             color: var(--dark);
         }
         
         input, textarea, select {
             width: 100%;
-            padding: 12px 15px;
+            padding: 10px 12px;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 1rem;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
         
         input:focus, textarea:focus, select:focus {
@@ -162,7 +160,7 @@
         }
         
         textarea {
-            min-height: 100px;
+            min-height: 80px;
             resize: vertical;
         }
         
@@ -170,8 +168,8 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 6px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -184,7 +182,7 @@
         .btn:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
         }
         
         .btn i {
@@ -210,50 +208,50 @@
         
         .word-card {
             background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 25px;
-            border-left: 6px solid var(--primary);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary);
             transition: transform 0.3s;
         }
         
         .word-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
         
         .word-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
         .word-header h3 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--primary);
         }
         
         .pinyin {
             color: var(--gray);
             font-style: italic;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .translation {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--dark);
-            margin-bottom: 15px;
-            padding: 10px;
+            margin-bottom: 12px;
+            padding: 8px;
             background-color: #fff9e6;
-            border-radius: 8px;
+            border-radius: 6px;
         }
         
         .section-title {
             font-weight: 600;
             color: var(--primary);
-            margin: 15px 0 5px;
+            margin: 12px 0 5px;
             display: flex;
             align-items: center;
         }
@@ -264,18 +262,18 @@
         
         .associations, .example-sentence {
             background-color: #f9f9f9;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border-left: 4px solid var(--secondary);
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--secondary);
         }
         
         .stats {
             display: flex;
             justify-content: space-around;
             text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 20px;
+            padding-top: 15px;
             border-top: 1px solid #eee;
         }
         
@@ -285,32 +283,32 @@
         }
         
         .stat-number {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
         }
         
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--gray);
         }
         
         .empty-state {
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 15px;
             color: var(--gray);
         }
         
         .empty-state i {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
             color: #e0e0e0;
         }
         
         .word-actions {
             display: flex;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 8px;
+            margin-top: 12px;
             flex-wrap: wrap;
         }
         
@@ -319,8 +317,8 @@
             border: none;
             color: var(--gray);
             cursor: pointer;
-            transition: color 0.3s;
-            font-size: 0.9rem;
+            transition: all 0.2s;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
             padding: 5px 10px;
@@ -337,31 +335,32 @@
         }
         
         .search-box {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .search-box input {
-            padding: 15px;
+            padding: 12px;
             font-size: 1rem;
-            border-radius: 10px;
+            border-radius: 8px;
             border: 2px solid #e0e0e0;
         }
         
         .filter-buttons {
             display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 8px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
         
         .filter-btn {
-            padding: 8px 15px;
+            padding: 6px 12px;
             background: white;
             border: 2px solid #e0e0e0;
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 500;
+            font-size: 0.9rem;
         }
         
         .filter-btn:hover, .filter-btn.active {
@@ -372,45 +371,58 @@
         
         .word-count {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 15px;
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
         footer {
             text-align: center;
-            margin-top: 50px;
-            padding: 20px;
+            margin-top: 40px;
+            padding: 15px;
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border-top: 1px solid #eee;
         }
         
         .character-display {
-            font-size: 2.5rem;
+            font-size: 2rem;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .tips {
             background-color: #e8f5e9;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 25px;
-            border-left: 5px solid var(--success);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid var(--success);
         }
         
         .tips h3 {
             color: var(--success);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .tips p {
+            font-size: 0.9rem;
         }
         
         /* Stili per la pagina audio */
+        .page-container {
+            display: none;
+        }
+        
+        .page-container.active {
+            display: block;
+        }
+        
         .audio-player {
             background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
         }
         
@@ -418,27 +430,27 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .audio-title {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--primary);
         }
         
         .audio-controls {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-top: 15px;
+            gap: 12px;
+            margin-top: 12px;
         }
         
         .play-btn {
             background: var(--primary);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -454,7 +466,7 @@
         
         .progress-container {
             flex-grow: 1;
-            height: 6px;
+            height: 5px;
             background: #e0e0e0;
             border-radius: 3px;
             cursor: pointer;
@@ -469,18 +481,18 @@
         }
         
         .time-display {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--gray);
-            min-width: 100px;
+            min-width: 80px;
             text-align: right;
         }
         
         .upload-area {
-            border: 3px dashed #ccc;
-            border-radius: 15px;
-            padding: 40px 20px;
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            padding: 30px 15px;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             transition: all 0.3s;
             cursor: pointer;
         }
@@ -491,24 +503,24 @@
         }
         
         .upload-area i {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--gray);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
         .audio-list {
-            margin-top: 30px;
+            margin-top: 25px;
         }
         
         .audio-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px;
+            padding: 12px;
             background: white;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            border-left: 4px solid var(--info);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--info);
         }
         
         .audio-info {
@@ -517,39 +529,31 @@
         
         .audio-name {
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
         
         .audio-meta {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--gray);
         }
         
         .audio-actions {
             display: flex;
-            gap: 10px;
-        }
-        
-        .audio-upload-form {
-            display: none;
-        }
-        
-        #audio-file {
-            display: none;
+            gap: 8px;
         }
         
         .file-info {
-            margin-top: 15px;
-            padding: 10px;
+            margin-top: 10px;
+            padding: 8px;
             background: #f0f0f0;
-            border-radius: 8px;
-            font-size: 0.9rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
         }
         
         .status-message {
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin: 15px 0;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 10px 0;
             display: none;
         }
         
@@ -563,40 +567,6 @@
             background-color: #ffebee;
             color: var(--primary);
             display: block;
-        }
-        
-        .page-container {
-            display: none;
-        }
-        
-        .page-container.active {
-            display: block;
-        }
-        
-        .connection-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-        
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #ccc;
-        }
-        
-        .status-dot.connected {
-            background-color: var(--success);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
         }
     </style>
 </head>
@@ -619,12 +589,7 @@
         </div>
         
         <h1>Impara il Cinese in Modo Divertente</h1>
-        <p class="subtitle">Aggiungi nuove parole, carica audio e memorizza il cinese con esempi pratici. Tutto in un unico posto!</p>
-        
-        <div class="connection-status">
-            <div class="status-dot" id="status-dot"></div>
-            <span id="status-text">Connessione a Supabase...</span>
-        </div>
+        <p class="subtitle">Aggiungi parole, carica audio e memorizza il cinese con esempi pratici</p>
     </header>
     
     <div class="container">
@@ -653,8 +618,7 @@
                         
                         <div class="form-group">
                             <label for="associations">Associazioni / Mnemotecnica</label>
-                            <textarea id="associations" placeholder="Es: 你 (nǐ) sembra un albero che saluta, 好 (hǎo) è una donna con un bambino = bene"></textarea>
-                            <small>Scrivi associazioni creative per ricordare la parola</small>
+                            <textarea id="associations" placeholder="Es: 你 (nǐ) sembra un albero che saluta"></textarea>
                         </div>
                         
                         <div class="form-group">
@@ -668,7 +632,7 @@
                         
                         <div class="tips">
                             <h3><i class="fas fa-lightbulb"></i> Suggerimento</h3>
-                            <p>Crea associazioni visive o sonore con parole italiane per ricordare meglio i caratteri cinesi. Es: 马 (mǎ - cavallo) assomiglia a un cavallo visto di lato.</p>
+                            <p>Crea associazioni visive o sonore con parole italiane per ricordare meglio i caratteri cinesi.</p>
                         </div>
                     </div>
                     
@@ -704,11 +668,10 @@
                     </div>
                     
                     <div id="words-container">
-                        <!-- Le parole verranno caricate qui dinamicamente -->
                         <div class="empty-state" id="empty-state">
                             <i class="far fa-file-alt"></i>
                             <h3>Nessuna parola ancora</h3>
-                            <p>Aggiungi la tua prima parola cinese usando il modulo a sinistra!</p>
+                            <p>Aggiungi la tua prima parola cinese!</p>
                         </div>
                     </div>
                     
@@ -728,20 +691,20 @@
                         
                         <div class="upload-area" id="upload-area">
                             <i class="fas fa-file-audio"></i>
-                            <h3>Trascina qui i tuoi file audio</h3>
-                            <p>oppure clicca per selezionare</p>
+                            <h3>Trascina o clicca per selezionare file audio</h3>
+                            <p>MP3, WAV, OGG fino a 5MB</p>
                             <p class="file-info" id="file-info">Nessun file selezionato</p>
                         </div>
                         
-                        <div class="audio-upload-form">
+                        <div id="audio-form">
                             <div class="form-group">
                                 <label for="audio-title">Titolo Audio</label>
                                 <input type="text" id="audio-title" placeholder="Es: Pronuncia di 你好">
                             </div>
                             
                             <div class="form-group">
-                                <label for="audio-description">Descrizione</label>
-                                <textarea id="audio-description" placeholder="Es: Pronuncia corretta di 'ciao' in cinese"></textarea>
+                                <label for="audio-description">Descrizione (opzionale)</label>
+                                <textarea id="audio-description" placeholder="Es: Pronuncia corretta di 'ciao'"></textarea>
                             </div>
                             
                             <div class="form-group">
@@ -786,11 +749,6 @@
                             
                             <audio id="audio-element" preload="metadata"></audio>
                         </div>
-                        
-                        <div class="tips">
-                            <h3><i class="fas fa-info-circle"></i> Informazioni</h3>
-                            <p>Puoi caricare file audio MP3, WAV o OGG fino a 10MB. Gli audio vengono salvati su Supabase e sono accessibili da qualsiasi dispositivo.</p>
-                        </div>
                     </div>
                 </div>
                 
@@ -799,14 +757,13 @@
                         <h2><i class="fas fa-list"></i> I Tuoi Audio</h2>
                         
                         <div class="search-box">
-                            <input type="text" id="audio-search" placeholder="Cerca audio per titolo o descrizione...">
+                            <input type="text" id="audio-search" placeholder="Cerca audio...">
                         </div>
                         
                         <div class="filter-buttons">
                             <button class="filter-btn active" data-audio-filter="all">Tutti</button>
                             <button class="filter-btn" data-audio-filter="pronuncia">Pronuncia</button>
                             <button class="filter-btn" data-audio-filter="dialoghi">Dialoghi</button>
-                            <button class="filter-btn" data-audio-filter="canzoni">Canzoni</button>
                             <button class="filter-btn" data-audio-filter="lezioni">Lezioni</button>
                         </div>
                         
@@ -814,12 +771,12 @@
                             <div class="empty-state">
                                 <i class="fas fa-music"></i>
                                 <h3>Nessun audio ancora</h3>
-                                <p>Carica il tuo primo file audio usando il modulo a sinistra!</p>
+                                <p>Carica il tuo primo file audio!</p>
                             </div>
                         </div>
                         
                         <div class="word-count">
-                            Mostrando <span id="audio-display-count">0</span> audio su <span id="audio-total-count">0</span>
+                            Audio: <span id="audio-display-count">0</span> su <span id="audio-total-count">0</span>
                         </div>
                     </div>
                 </div>
@@ -827,18 +784,19 @@
         </div>
         
         <footer>
-            <p>Workspace di Cinese - Un progetto per imparare il cinese in modo divertente ed efficace</p>
-            <p>Le parole vengono salvate nel tuo browser, gli audio su Supabase</p>
+            <p>Workspace di Cinese - Le parole sono salvate nel tuo browser, gli audio localmente</p>
         </footer>
     </div>
 
     <script>
-        // Configurazione Supabase
-        const SUPABASE_URL = 'https://jamlmyhqdyxlwjmaewyg.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_q_WGPgvRvhWXUFMUdCtWiw_ZkqeXMSs';
-        
-        // Inizializza Supabase
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        // Stato dell'applicazione
+        let words = [];
+        let audios = [];
+        let currentFilter = 'all';
+        let currentAudioFilter = 'all';
+        let searchQuery = '';
+        let audioSearchQuery = '';
+        let selectedAudioFile = null;
         
         // Riferimenti agli elementi del DOM
         const addWordBtn = document.getElementById('add-word-btn');
@@ -848,22 +806,19 @@
         const associationsInput = document.getElementById('associations');
         const exampleInput = document.getElementById('example');
         const wordsContainer = document.getElementById('words-container');
-        const emptyState = document.getElementById('empty-state');
         const searchInput = document.getElementById('search-input');
-        const filterButtons = document.querySelectorAll('.filter-btn');
         const totalWordsElement = document.getElementById('total-words');
         const todayWordsElement = document.getElementById('today-words');
         const reviewCountElement = document.getElementById('review-count');
         const displayCountElement = document.getElementById('display-count');
         const totalCountElement = document.getElementById('total-count');
+        
+        // Elementi navigazione
         const navLinks = document.querySelectorAll('.nav-link');
         const pageContainers = document.querySelectorAll('.page-container');
-        const statusDot = document.getElementById('status-dot');
-        const statusText = document.getElementById('status-text');
         
         // Elementi audio
         const uploadArea = document.getElementById('upload-area');
-        const audioFileInput = document.getElementById('audio-file');
         const audioTitleInput = document.getElementById('audio-title');
         const audioDescriptionInput = document.getElementById('audio-description');
         const audioCategoryInput = document.getElementById('audio-category');
@@ -882,62 +837,27 @@
         const audioElement = document.getElementById('audio-element');
         const currentAudioTitle = document.getElementById('current-audio-title');
         
-        // Stato dell'applicazione
-        let words = [];
-        let audios = [];
-        let currentFilter = 'all';
-        let currentAudioFilter = 'all';
-        let searchQuery = '';
-        let audioSearchQuery = '';
-        let selectedAudioFile = null;
-        let currentPlayingAudio = null;
-        
-        // Controlla la connessione a Supabase
-        async function checkSupabaseConnection() {
-            try {
-                const { data, error } = await supabase.from('audios').select('count').limit(1);
-                
-                if (error) {
-                    console.error('Errore connessione Supabase:', error);
-                    statusDot.classList.remove('connected');
-                    statusText.textContent = 'Errore connessione a Supabase';
-                    return false;
-                }
-                
-                statusDot.classList.add('connected');
-                statusText.textContent = 'Connesso a Supabase';
-                return true;
-            } catch (error) {
-                console.error('Errore connessione Supabase:', error);
-                statusDot.classList.remove('connected');
-                statusText.textContent = 'Errore connessione a Supabase';
-                return false;
-            }
-        }
-        
-        // Carica le parole dal localStorage all'avvio
-        document.addEventListener('DOMContentLoaded', async function() {
-            // Controlla connessione Supabase
-            await checkSupabaseConnection();
-            
-            // Carica dati
+        // Carica i dati all'avvio
+        document.addEventListener('DOMContentLoaded', function() {
             loadWords();
+            loadAudios();
             updateStats();
             renderWords();
-            loadAudios();
+            renderAudios();
             
-            // Aggiungi alcune parole di esempio se non ce ne sono
+            // Aggiungi parole di esempio se non ce ne sono
             if (words.length === 0) {
                 addExampleWords();
             }
             
-            // Aggiungi un po' di interattività per la data odierna
-            const today = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.querySelector('.subtitle').innerHTML += `<br><small>Oggi è ${today.toLocaleDateString('it-IT', options)}</small>`;
+            // Aggiungi audio di esempio se non ce ne sono
+            if (audios.length === 0) {
+                addExampleAudios();
+            }
         });
         
-        // Navigazione tra pagine
+        // ========== NAVIGAZIONE ==========
+        
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -954,15 +874,10 @@
                 });
                 
                 document.getElementById(`${page}-page`).classList.add('active');
-                
-                // Se siamo nella pagina audio, carica gli audio
-                if (page === 'audio') {
-                    loadAudios();
-                }
             });
         });
         
-        // ========== FUNZIONI PER LE PAROLE ==========
+        // ========== GESTIONE PAROLE ==========
         
         // Aggiungi parola
         addWordBtn.addEventListener('click', function() {
@@ -971,7 +886,7 @@
             const translation = translationInput.value.trim();
             
             if (!chineseWord || !pinyin || !translation) {
-                alert('Per favore, inserisci almeno la parola cinese, il pinyin e la traduzione.');
+                alert('Inserisci almeno la parola cinese, il pinyin e la traduzione.');
                 return;
             }
             
@@ -988,14 +903,14 @@
                 favorite: false
             };
             
-            words.unshift(newWord); // Aggiungi all'inizio
+            words.unshift(newWord);
             saveWords();
             renderWords();
             updateStats();
             clearForm();
             
-            // Evidenzia l'animazione
-            addWordBtn.innerHTML = '<i class="fas fa-check"></i> Parola Aggiunta!';
+            // Feedback visivo
+            addWordBtn.innerHTML = '<i class="fas fa-check"></i> Aggiunta!';
             addWordBtn.style.backgroundColor = 'var(--success)';
             
             setTimeout(() => {
@@ -1004,7 +919,7 @@
             }, 1500);
         });
         
-        // Funzione per caricare le parole da localStorage
+        // Carica parole da localStorage
         function loadWords() {
             const savedWords = localStorage.getItem('chineseWords');
             if (savedWords) {
@@ -1012,12 +927,12 @@
             }
         }
         
-        // Funzione per salvare le parole in localStorage
+        // Salva parole in localStorage
         function saveWords() {
             localStorage.setItem('chineseWords', JSON.stringify(words));
         }
         
-        // Funzione per ripulire il form
+        // Pulisci il form
         function clearForm() {
             chineseWordInput.value = '';
             pinyinInput.value = '';
@@ -1027,12 +942,11 @@
             chineseWordInput.focus();
         }
         
-        // Funzione per visualizzare le parole
+        // Visualizza parole
         function renderWords() {
-            // Filtra le parole in base al filtro attivo e alla ricerca
             let filteredWords = words;
             
-            // Applica il filtro
+            // Applica filtro
             if (currentFilter === 'recent') {
                 const oneWeekAgo = new Date();
                 oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
@@ -1046,34 +960,33 @@
                 filteredWords = filteredWords.filter(word => word.favorite);
             }
             
-            // Applica la ricerca
+            // Applica ricerca
             if (searchQuery) {
                 const query = searchQuery.toLowerCase();
                 filteredWords = filteredWords.filter(word => {
                     return word.chinese.toLowerCase().includes(query) ||
                            word.pinyin.toLowerCase().includes(query) ||
-                           word.translation.toLowerCase().includes(query) ||
-                           word.associations.toLowerCase().includes(query) ||
-                           word.example.toLowerCase().includes(query);
+                           word.translation.toLowerCase().includes(query);
                 });
             }
             
-            // Aggiorna i contatori
+            // Aggiorna contatori
             displayCountElement.textContent = filteredWords.length;
             totalCountElement.textContent = words.length;
             
-            // Se non ci sono parole da mostrare, mostra lo stato vuoto
+            // Se non ci sono parole
             if (filteredWords.length === 0) {
-                emptyState.style.display = 'block';
-                wordsContainer.innerHTML = '';
-                wordsContainer.appendChild(emptyState);
+                wordsContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="far fa-file-alt"></i>
+                        <h3>Nessuna parola trovata</h3>
+                        <p>${words.length === 0 ? 'Aggiungi la tua prima parola!' : 'Prova a cambiare filtro o ricerca'}</p>
+                    </div>
+                `;
                 return;
             }
             
-            // Nascondi lo stato vuoto
-            emptyState.style.display = 'none';
-            
-            // Crea gli elementi per ogni parola
+            // Crea le card delle parole
             let wordsHTML = '';
             filteredWords.forEach(word => {
                 wordsHTML += `
@@ -1082,7 +995,7 @@
                             <h3 class="character-display">${word.chinese}</h3>
                             <div>
                                 <button class="action-btn ${word.favorite ? 'favorite' : ''}" onclick="toggleFavorite(${word.id})">
-                                    <i class="${word.favorite ? 'fas' : 'far'} fa-star"></i> ${word.favorite ? 'Preferita' : 'Aggiungi ai preferiti'}
+                                    <i class="${word.favorite ? 'fas' : 'far'} fa-star"></i>
                                 </button>
                             </div>
                         </div>
@@ -1095,13 +1008,13 @@
                         ` : ''}
                         
                         ${word.example ? `
-                            <div class="section-title"><i class="fas fa-comment"></i> Frase d'Esempio</div>
+                            <div class="section-title"><i class="fas fa-comment"></i> Esempio</div>
                             <div class="example-sentence">${word.example}</div>
                         ` : ''}
                         
                         <div class="word-actions">
                             <button class="action-btn" onclick="markAsReviewed(${word.id})">
-                                <i class="fas fa-check-circle"></i> Segna come ripassata
+                                <i class="fas fa-check-circle"></i> Ripassata
                             </button>
                             <button class="action-btn" onclick="deleteWord(${word.id})">
                                 <i class="fas fa-trash-alt"></i> Elimina
@@ -1114,7 +1027,7 @@
             wordsContainer.innerHTML = wordsHTML;
         }
         
-        // Funzione per aggiungere parole di esempio
+        // Aggiungi parole di esempio
         function addExampleWords() {
             const exampleWords = [
                 {
@@ -1122,11 +1035,11 @@
                     chinese: '你好',
                     pinyin: 'nǐ hǎo',
                     translation: 'Ciao',
-                    associations: '你 (nǐ) sembra una persona che si inchina, 好 (hǎo) è una donna con un bambino = bene',
+                    associations: '你 (nǐ) sembra una persona che si inchina',
                     example: '你好，我叫玛丽。 (nǐ hǎo, wǒ jiào mǎlì) - Ciao, mi chiamo Maria.',
-                    dateAdded: '2023-10-01',
-                    lastReviewed: '2023-10-05',
-                    needsReview: false,
+                    dateAdded: new Date().toISOString().split('T')[0],
+                    lastReviewed: null,
+                    needsReview: true,
                     favorite: true
                 },
                 {
@@ -1134,9 +1047,9 @@
                     chinese: '谢谢',
                     pinyin: 'xiè xie',
                     translation: 'Grazie',
-                    associations: '谢 (xiè) sembra una persona che si inchina per ringraziare',
+                    associations: '谢 (xiè) sembra una persona che ringrazia',
                     example: '谢谢你的帮助。 (xièxie nǐ de bāngzhù) - Grazie per il tuo aiuto.',
-                    dateAdded: '2023-10-02',
+                    dateAdded: new Date().toISOString().split('T')[0],
                     lastReviewed: null,
                     needsReview: true,
                     favorite: true
@@ -1152,18 +1065,6 @@
                     lastReviewed: '2023-10-10',
                     needsReview: false,
                     favorite: false
-                },
-                {
-                    id: 4,
-                    chinese: '水',
-                    pinyin: 'shuǐ',
-                    translation: 'Acqua',
-                    associations: 'Sembra le onde dell\'acqua che scorrono',
-                    example: '我想要一杯水。 (wǒ xiǎng yào yī bēi shuǐ) - Vorrei un bicchiere d\'acqua.',
-                    dateAdded: '2023-10-04',
-                    lastReviewed: null,
-                    needsReview: true,
-                    favorite: false
                 }
             ];
             
@@ -1172,21 +1073,19 @@
             updateStats();
         }
         
-        // Funzione per aggiornare le statistiche
+        // Aggiorna statistiche
         function updateStats() {
             totalWordsElement.textContent = words.length;
             
-            // Conta le parole aggiunte oggi
             const today = new Date().toISOString().split('T')[0];
             const todayWords = words.filter(word => word.dateAdded === today).length;
             todayWordsElement.textContent = todayWords;
             
-            // Conta le parole da ripassare
             const reviewWords = words.filter(word => word.needsReview).length;
             reviewCountElement.textContent = reviewWords;
         }
         
-        // Funzione per segnare una parola come ripassata
+        // Segna come ripassata
         function markAsReviewed(id) {
             const wordIndex = words.findIndex(word => word.id === id);
             if (wordIndex !== -1) {
@@ -1195,22 +1094,12 @@
                 saveWords();
                 renderWords();
                 updateStats();
-                
-                // Feedback visivo
-                const wordCard = document.querySelector(`.word-card[data-id="${id}"]`);
-                wordCard.style.borderLeftColor = 'var(--success)';
-                
-                setTimeout(() => {
-                    if (wordCard) {
-                        wordCard.style.borderLeftColor = '';
-                    }
-                }, 1000);
             }
         }
         
-        // Funzione per eliminare una parola
+        // Elimina parola
         function deleteWord(id) {
-            if (confirm('Sei sicuro di voler eliminare questa parola?')) {
+            if (confirm('Eliminare questa parola?')) {
                 words = words.filter(word => word.id !== id);
                 saveWords();
                 renderWords();
@@ -1218,7 +1107,7 @@
             }
         }
         
-        // Funzione per aggiungere/rimuovere dai preferiti
+        // Aggiungi/rimuovi preferiti
         function toggleFavorite(id) {
             const wordIndex = words.findIndex(word => word.id === id);
             if (wordIndex !== -1) {
@@ -1228,54 +1117,31 @@
             }
         }
         
-        // Gestione della ricerca
+        // Ricerca parole
         searchInput.addEventListener('input', function() {
             searchQuery = this.value;
             renderWords();
         });
         
-        // Gestione dei filtri
-        filterButtons.forEach(button => {
+        // Filtri parole
+        document.querySelectorAll('[data-filter]').forEach(button => {
             button.addEventListener('click', function() {
-                // Controlla se è un filtro per parole o audio
-                if (this.hasAttribute('data-audio-filter')) {
-                    // Filtro audio
-                    currentAudioFilter = this.getAttribute('data-audio-filter');
-                    
-                    // Aggiorna stato attivo
-                    document.querySelectorAll('[data-audio-filter]').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                    
-                    renderAudios();
-                } else {
-                    // Filtro parole
-                    currentFilter = this.getAttribute('data-filter');
-                    
-                    // Aggiorna stato attivo
-                    document.querySelectorAll('[data-filter]').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                    
-                    renderWords();
-                }
+                currentFilter = this.getAttribute('data-filter');
+                
+                // Aggiorna stato attivo
+                document.querySelectorAll('[data-filter]').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                renderWords();
             });
         });
         
-        // Permetti l'invio del form con il tasto Invio
-        chineseWordInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                addWordBtn.click();
-            }
-        });
+        // ========== GESTIONE AUDIO ==========
         
-        // ========== FUNZIONI PER GLI AUDIO ==========
-        
-        // Gestione upload area
+        // Seleziona file audio
         uploadArea.addEventListener('click', function() {
-            // Crea un input file temporaneo
             const fileInput = document.createElement('input');
             fileInput.type = 'file';
             fileInput.accept = 'audio/*';
@@ -1285,123 +1151,83 @@
                 if (this.files.length > 0) {
                     selectedAudioFile = this.files[0];
                     
-                    // Mostra informazioni sul file
+                    // Controlla dimensione (max 5MB)
+                    if (selectedAudioFile.size > 5 * 1024 * 1024) {
+                        showUploadStatus('File troppo grande! Massimo 5MB.', 'error');
+                        selectedAudioFile = null;
+                        fileInfo.textContent = 'Nessun file selezionato';
+                        return;
+                    }
+                    
+                    // Mostra informazioni file
                     fileInfo.textContent = `${selectedAudioFile.name} (${(selectedAudioFile.size / 1024 / 1024).toFixed(2)} MB)`;
                     
                     // Imposta titolo predefinito
                     audioTitleInput.value = selectedAudioFile.name.replace(/\.[^/.]+$/, "");
                     
-                    // Mostra il form di upload
-                    document.querySelector('.audio-upload-form').style.display = 'block';
+                    // Mostra messaggio
+                    showUploadStatus('File selezionato. Compila i dettagli e clicca "Carica Audio".', 'success');
                 }
             });
             
             fileInput.click();
         });
         
-        // Upload audio a Supabase
-        uploadAudioBtn.addEventListener('click', async function() {
+        // Upload audio (salva localmente)
+        uploadAudioBtn.addEventListener('click', function() {
             if (!selectedAudioFile) {
-                showUploadStatus('Per favore, seleziona un file audio prima di caricare.', 'error');
+                showUploadStatus('Seleziona un file audio prima!', 'error');
                 return;
             }
             
             const title = audioTitleInput.value.trim();
             if (!title) {
-                showUploadStatus('Per favore, inserisci un titolo per l\'audio.', 'error');
+                showUploadStatus('Inserisci un titolo per l\'audio.', 'error');
                 return;
             }
             
-            // Controlla la dimensione del file (max 10MB)
-            if (selectedAudioFile.size > 10 * 1024 * 1024) {
-                showUploadStatus('Il file è troppo grande. Dimensione massima: 10MB.', 'error');
-                return;
-            }
-            
-            try {
-                // Disabilita il pulsante durante l'upload
-                uploadAudioBtn.disabled = true;
-                uploadAudioBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Caricamento...';
+            // Leggi il file come URL
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const newAudio = {
+                    id: Date.now(),
+                    title: title,
+                    description: audioDescriptionInput.value.trim(),
+                    category: audioCategoryInput.value,
+                    fileName: selectedAudioFile.name,
+                    fileSize: selectedAudioFile.size,
+                    fileType: selectedAudioFile.type,
+                    audioUrl: e.target.result, // Data URL
+                    uploadedAt: new Date().toISOString()
+                };
                 
-                // Crea un nome file unico
-                const fileExt = selectedAudioFile.name.split('.').pop();
-                const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+                audios.unshift(newAudio);
+                saveAudios();
+                renderAudios();
                 
-                // Upload del file a Supabase Storage
-                const { data: uploadData, error: uploadError } = await supabase.storage
-                    .from('chinese-audios')
-                    .upload(fileName, selectedAudioFile);
-                
-                if (uploadError) {
-                    throw uploadError;
-                }
-                
-                // Ottieni l'URL pubblico del file
-                const { data: urlData } = supabase.storage
-                    .from('chinese-audios')
-                    .getPublicUrl(fileName);
-                
-                // Salva i metadati nel database
-                const { data: insertData, error: insertError } = await supabase
-                    .from('audios')
-                    .insert([
-                        {
-                            title: title,
-                            description: audioDescriptionInput.value.trim(),
-                            category: audioCategoryInput.value,
-                            file_name: fileName,
-                            file_url: urlData.publicUrl,
-                            file_size: selectedAudioFile.size,
-                            file_type: selectedAudioFile.type,
-                            uploaded_at: new Date().toISOString()
-                        }
-                    ]);
-                
-                if (insertError) {
-                    throw insertError;
-                }
-                
-                showUploadStatus('Audio caricato con successo!', 'success');
-                
-                // Resetta il form
+                // Resetta form
                 resetAudioForm();
                 
-                // Ricarica la lista audio
-                loadAudios();
-                
-            } catch (error) {
-                console.error('Errore durante l\'upload:', error);
-                showUploadStatus(`Errore durante l'upload: ${error.message}`, 'error');
-            } finally {
-                // Riabilita il pulsante
-                uploadAudioBtn.disabled = false;
-                uploadAudioBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Carica Audio';
-            }
+                showUploadStatus('Audio salvato correttamente!', 'success');
+            };
+            
+            reader.readAsDataURL(selectedAudioFile);
         });
         
-        // Carica gli audio da Supabase
-        async function loadAudios() {
-            try {
-                const { data, error } = await supabase
-                    .from('audios')
-                    .select('*')
-                    .order('uploaded_at', { ascending: false });
-                
-                if (error) {
-                    throw error;
-                }
-                
-                audios = data || [];
-                renderAudios();
-                
-            } catch (error) {
-                console.error('Errore nel caricamento degli audio:', error);
-                audios = [];
-                renderAudios();
+        // Carica audio da localStorage
+        function loadAudios() {
+            const savedAudios = localStorage.getItem('chineseAudios');
+            if (savedAudios) {
+                audios = JSON.parse(savedAudios);
             }
         }
         
-        // Visualizza gli audio
+        // Salva audio in localStorage
+        function saveAudios() {
+            localStorage.setItem('chineseAudios', JSON.stringify(audios));
+        }
+        
+        // Visualizza audio
         function renderAudios() {
             let filteredAudios = audios;
             
@@ -1429,7 +1255,7 @@
                     <div class="empty-state">
                         <i class="fas fa-music"></i>
                         <h3>Nessun audio trovato</h3>
-                        <p>${audios.length === 0 ? 'Carica il tuo primo file audio!' : 'Prova a cambiare filtro o ricerca'}</p>
+                        <p>${audios.length === 0 ? 'Carica il tuo primo audio!' : 'Prova a cambiare filtro o ricerca'}</p>
                     </div>
                 `;
                 return;
@@ -1438,8 +1264,8 @@
             // Crea la lista audio
             let audioHTML = '';
             filteredAudios.forEach(audio => {
-                const uploadDate = new Date(audio.uploaded_at).toLocaleDateString('it-IT');
-                const fileSizeMB = (audio.file_size / 1024 / 1024).toFixed(2);
+                const uploadDate = new Date(audio.uploadedAt).toLocaleDateString('it-IT');
+                const fileSizeMB = (audio.fileSize / 1024 / 1024).toFixed(2);
                 
                 audioHTML += `
                     <div class="audio-item" data-id="${audio.id}">
@@ -1447,15 +1273,15 @@
                             <div class="audio-name">${audio.title}</div>
                             <div class="audio-meta">
                                 ${audio.description ? `${audio.description} • ` : ''}
-                                ${uploadDate} • ${fileSizeMB} MB • ${audio.category}
+                                ${uploadDate} • ${fileSizeMB} MB
                             </div>
                         </div>
                         <div class="audio-actions">
-                            <button class="action-btn" onclick="playAudio('${audio.file_url}', '${audio.title}')">
+                            <button class="action-btn" onclick="playAudio('${audio.audioUrl}', '${audio.title}')">
                                 <i class="fas fa-play"></i> Ascolta
                             </button>
                             <button class="action-btn" onclick="deleteAudio(${audio.id})">
-                                <i class="fas fa-trash-alt"></i> Elimina
+                                <i class="fas fa-trash-alt"></i>
                             </button>
                         </div>
                     </div>
@@ -1465,19 +1291,50 @@
             audioList.innerHTML = audioHTML;
         }
         
-        // Riproduce un audio
+        // Aggiungi audio di esempio
+        function addExampleAudios() {
+            // Non possiamo creare audio di esempio reali senza file audio
+            // Ma possiamo creare dati di esempio
+            const exampleAudios = [
+                {
+                    id: 1,
+                    title: 'Pronuncia corretta di 你好',
+                    description: 'Come dire "ciao" in cinese',
+                    category: 'pronuncia',
+                    fileName: 'nihao.mp3',
+                    fileSize: 102400,
+                    fileType: 'audio/mpeg',
+                    audioUrl: '#', // Placeholder
+                    uploadedAt: new Date().toISOString()
+                },
+                {
+                    id: 2,
+                    title: 'Dialogo base - Presentazioni',
+                    description: 'Dialogo per presentarsi',
+                    category: 'dialoghi',
+                    fileName: 'dialogo.mp3',
+                    fileSize: 204800,
+                    fileType: 'audio/mpeg',
+                    audioUrl: '#',
+                    uploadedAt: new Date().toISOString()
+                }
+            ];
+            
+            audios = exampleAudios;
+            saveAudios();
+        }
+        
+        // Riproduci audio
         function playAudio(url, title) {
-            // Se c'è già un audio in riproduzione, fermalo
-            if (currentPlayingAudio === url && !audioElement.paused) {
-                audioElement.pause();
-                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            // Se è un placeholder, mostra messaggio
+            if (url === '#') {
+                showUploadStatus('Questo è un audio di esempio. Carica i tuoi file audio per ascoltarli.', 'error');
                 return;
             }
             
-            // Imposta l'audio da riprodurre
+            // Imposta l'audio
             audioElement.src = url;
             currentAudioTitle.textContent = title;
-            currentPlayingAudio = url;
             
             // Avvia la riproduzione
             audioElement.play();
@@ -1496,27 +1353,29 @@
             });
         }
         
-        // Aggiorna la barra di progresso
+        // Aggiorna barra di progresso
         function updateProgress() {
             const progressPercent = (audioElement.currentTime / audioElement.duration) * 100;
             progressBar.style.width = `${progressPercent}%`;
             currentTimeElement.textContent = formatTime(audioElement.currentTime);
         }
         
-        // Formatta il tempo in minuti:secondi
+        // Formatta tempo
         function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
             const mins = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
         
-        // Controlli del player
+        // Controlli player
         playBtn.addEventListener('click', function() {
+            if (!audioElement.src || audioElement.src === '') {
+                showUploadStatus('Seleziona un audio da riprodurre.', 'error');
+                return;
+            }
+            
             if (audioElement.paused) {
-                if (!audioElement.src) {
-                    showUploadStatus('Seleziona un audio da riprodurre prima.', 'error');
-                    return;
-                }
                 audioElement.play();
                 this.innerHTML = '<i class="fas fa-pause"></i>';
             } else {
@@ -1525,8 +1384,10 @@
             }
         });
         
-        // Clic sulla barra di progresso per saltare
+        // Clic sulla barra di progresso
         progressContainer.addEventListener('click', function(e) {
+            if (!audioElement.duration) return;
+            
             const width = this.clientWidth;
             const clickX = e.offsetX;
             const duration = audioElement.duration;
@@ -1534,53 +1395,21 @@
             audioElement.currentTime = (clickX / width) * duration;
         });
         
-        // Elimina un audio
-        async function deleteAudio(id) {
-            if (!confirm('Sei sicuro di voler eliminare questo audio?')) {
-                return;
-            }
-            
-            try {
-                // Trova l'audio da eliminare
-                const audioToDelete = audios.find(audio => audio.id === id);
-                if (!audioToDelete) return;
+        // Elimina audio
+        function deleteAudio(id) {
+            if (confirm('Eliminare questo audio?')) {
+                audios = audios.filter(audio => audio.id !== id);
+                saveAudios();
+                renderAudios();
                 
-                // Elimina il file dallo storage
-                const { error: storageError } = await supabase.storage
-                    .from('chinese-audios')
-                    .remove([audioToDelete.file_name]);
-                
-                if (storageError) {
-                    throw storageError;
-                }
-                
-                // Elimina il record dal database
-                const { error: dbError } = await supabase
-                    .from('audios')
-                    .delete()
-                    .eq('id', id);
-                
-                if (dbError) {
-                    throw dbError;
-                }
-                
-                // Ricarica gli audio
-                loadAudios();
-                
-                // Se l'audio eliminato era in riproduzione, ferma la riproduzione
-                if (currentPlayingAudio === audioToDelete.file_url) {
+                // Se l'audio eliminato era in riproduzione, ferma
+                if (audioElement.src.includes(id)) {
                     audioElement.pause();
                     audioElement.src = '';
                     currentAudioTitle.textContent = 'Nessun audio selezionato';
                     playBtn.innerHTML = '<i class="fas fa-play"></i>';
                     progressBar.style.width = '0%';
-                    currentTimeElement.textContent = '0:00';
-                    durationElement.textContent = '0:00';
                 }
-                
-            } catch (error) {
-                console.error('Errore durante l\'eliminazione dell\'audio:', error);
-                alert('Errore durante l\'eliminazione dell\'audio. Riprova.');
             }
         }
         
@@ -1590,7 +1419,21 @@
             renderAudios();
         });
         
-        // Mostra messaggio di stato per l'upload
+        // Filtri audio
+        document.querySelectorAll('[data-audio-filter]').forEach(button => {
+            button.addEventListener('click', function() {
+                currentAudioFilter = this.getAttribute('data-audio-filter');
+                
+                document.querySelectorAll('[data-audio-filter]').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                renderAudios();
+            });
+        });
+        
+        // Mostra messaggio di stato
         function showUploadStatus(message, type) {
             uploadStatus.textContent = message;
             uploadStatus.className = 'status-message';
@@ -1598,20 +1441,19 @@
             
             setTimeout(() => {
                 uploadStatus.style.display = 'none';
-            }, 5000);
+            }, 3000);
         }
         
-        // Resetta il form audio
+        // Resetta form audio
         function resetAudioForm() {
             selectedAudioFile = null;
             audioTitleInput.value = '';
             audioDescriptionInput.value = '';
             audioCategoryInput.value = 'pronuncia';
             fileInfo.textContent = 'Nessun file selezionato';
-            document.querySelector('.audio-upload-form').style.display = 'none';
         }
         
-        // Esponi le funzioni globalmente per gli onclick
+        // Esponi funzioni globalmente
         window.toggleFavorite = toggleFavorite;
         window.markAsReviewed = markAsReviewed;
         window.deleteWord = deleteWord;
